@@ -53,6 +53,11 @@ public class SpawnManager : MonoBehaviour
         SpawnBomb(noOfBombsToSpawn);
     }
 
+    void SpwanMultipleFruitOverTime(int noOfFruitToSpawn)
+    {
+
+    }
+
     void SpawnBomb(int noOfBombToSpawn)
     {
         for (int i = 0;i < noOfBombToSpawn;i++)
