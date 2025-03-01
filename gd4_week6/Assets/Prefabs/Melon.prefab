@@ -88,6 +88,8 @@ MonoBehaviour:
   wholeFruit: {fileID: 6807972047965017776}
   ps1: {fileID: 817794884415715245}
   ps2: {fileID: 2037545891788992317}
+  isStart: 0
+  fruitSplat: {fileID: 0}
 --- !u!114 &996314248231120324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,6 +110,7 @@ MonoBehaviour:
   isDestroyed: 0
   isStart: 0
   rotationSpeed: 1
+  startRotationForce: 0.2
 --- !u!54 &421765160673873673
 Rigidbody:
   m_ObjectHideFlags: 0

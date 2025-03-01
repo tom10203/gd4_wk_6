@@ -40,9 +40,10 @@ public class Fruit : MonoBehaviour
                 if (!isStart)
                 {
                     spawnManager.currentFruit--;
+                    uiManager.UpdateScore(1);
                 }
 
-                uiManager.UpdateScore(1);
+                
                 leftHalf.SetActive(true);
                 rightHalf.SetActive(true);
                 wholeFruit.SetActive(false);
@@ -53,7 +54,14 @@ public class Fruit : MonoBehaviour
             else if (target.isDestroyed)
             {
                 spawnManager.currentFruit--;
-                interact = false;   
+                interact = false;
+                if (!isStart)
+                {
+                    if (Time.time > spawnManager.reduceLivesTimer)
+                    {
+                        spawnManager.reduceLives = true;
+                    }
+                }
             }
         }
     }

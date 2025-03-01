@@ -14,6 +14,8 @@ public class Bomb : MonoBehaviour
     public GameObject bombWick;
     public ParticleSystem smoke;
     public ParticleSystem sparks;
+
+    [SerializeField] AudioSource bombExplosion;
     void Start()
     {
         target = GetComponent<Target>();
@@ -25,16 +27,29 @@ public class Bomb : MonoBehaviour
     {
         if (target.isHit && interact)
         {
-            explosion.Play();
+            if (explosion != null)
+            {
+                explosion.Play();
+            }
+            
+            bombExplosion.Play();
             print($"bomb hit");
             uiManager.UpdateLives(-1);
             interact = false;
 
             bombMesh.SetActive(false);
             bombWick.SetActive(false);
-            smoke.Stop();
-            sparks.Stop();
-            sparks.Clear();
+            if (smoke != null)
+            {
+                smoke.Stop();
+            }
+            if (sparks != null)
+            {
+                sparks.Stop();
+                sparks.Clear();
+            }
+            
+            uiManager.GameOver();
 
         }
     }

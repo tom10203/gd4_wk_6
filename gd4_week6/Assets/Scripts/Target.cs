@@ -15,6 +15,8 @@ public class Target : MonoBehaviour
     public bool isStart = false;
     public float rotationSpeed = 1f;
 
+    [SerializeField] float startRotationForce = 0.2f;
+
     Vector3 startHitPos;
     Vector3 rotationVector;
     
@@ -30,12 +32,13 @@ public class Target : MonoBehaviour
             float xScale = Random.Range(0f, 1f);
             float dir = transform.position.x < 0 ? 1f : -1f;
 
-            rb.velocity = new Vector3(maxVelocity.x * xScale * dir, maxVelocity.y * yScale, 0);
+            rb.linearVelocity = new Vector3(maxVelocity.x * xScale * dir, maxVelocity.y * yScale, 0);
             rb.AddTorque(Random.Range(0f, 1f) * torque, Random.Range(0f, 1f) * torque, Random.Range(0f, 1f) * torque, ForceMode.Impulse);
         }
         else
         {
-            rotationVector = Vector3.one * Random.Range(0.1f, 0.9f);
+            rotationVector = Vector3.one * startRotationForce;
+            rb.AddTorque(rotationVector);
         }
 
     }
